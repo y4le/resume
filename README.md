@@ -17,4 +17,7 @@
  - moved content to a git submodule
  - make responsive styles apply to high pixel density devices (phones)
 
+2025:
+ - add meta content
+
 Check it out [here](http://y4le.github.io/react-resume/)
