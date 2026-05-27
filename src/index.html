@@ -1,9 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Yale Thomas Resume</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yale Thomas — resume</title>
+
+  <!-- SEO / parseability -->
+  <meta name="author" content="Yale Thomas" />
+  <meta name="description" content="Yale Thomas — software engineer working across backend, data science, and client, with a focus on machine learning. Resume and work history." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Yale Thomas — resume" />
+  <meta property="og:description" content="Software engineer across backend, data science, and client, with a focus on machine learning." />
+
+  <!-- accent-square mark -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Geist Sans + Geist Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" />
+
+  <!-- set theme before paint (no flash); honors saved choice then OS preference -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 <body>
   <div id="app"></div>

@@ -6,31 +6,24 @@
   "author": "Yale Thomas",
   "license": "MIT",
   "scripts": {
+    "build": "npx webpack --mode production",
     "pdf": "node ./src/pdf/makePdf.js",
-    "buildProd": "yarn run pdf && npx webpack --mode production",
-    "server": "npx webpack-dev-server --mode development"
+    "buildProd": "npx webpack --mode production && node ./src/pdf/makePdf.js",
+    "server": "npx webpack serve --mode development",
+    "server:tailnet": "DEV_BASE_PATH=/react-resume/ npx webpack serve --mode development --port 8090"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
-    "@babel/node": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
-    "@babel/register": "^7.23.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
-    "@react-pdf/renderer": "^3.3.8",
-    "assert": "^2.1.0",
     "babel-loader": "^9.1.3",
-    "browserify-zlib": "^0.2.0",
-    "buffer": "^6.0.3",
+    "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^6.10.0",
-    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.0",
-    "less": "^4.2.0",
-    "less-loader": "^12.2.0",
-    "process": "^0.11.10",
+    "puppeteer": "^23.11.1",
     "react-refresh": "^0.14.0",
     "style-loader": "^3.3.4",
-    "util": "^0.12.5",
     "webpack": "^5.90.1",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4",
@@ -39,7 +32,6 @@
   "dependencies": {
     "preact": "^10.19.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "stream-browserify": "^3.0.0"
+    "react-dom": "^18.2.0"
   }
 }

@@ -1,0 +1,160 @@
+/* =============================================================
+   tufte design system — colors, type, spacing, semantic styles
+   These tokens are now the production source of truth; see
+   docs/design-system.md for the preserved design rationale. Fonts are loaded
+   via <link> in index.html (not an @import here) so the css-loader never has
+   to resolve a remote url.
+   ============================================================= */
+
+/* ---------- Tokens — dark mode (default) ---------- */
+:root {
+  /* Surfaces */
+  --bg:         #0e0e0d;   /* page — warm near-black, NOT pure black */
+  --surface:    #171715;   /* sticky headers, menus — 6% step over bg */
+  --surface-2:  #1d1c1a;   /* table headers, code blocks — used sparingly */
+
+  /* Ink */
+  --fg:         #e8e3d5;   /* primary text — warm paper inverted */
+  --muted:      #8a857a;   /* labels, units, sources, secondary */
+  --faint:      #4a4842;   /* timestamps, very low priority */
+
+  /* Lines */
+  --rule:       #2a2926;   /* the single hairline color, 1px everywhere */
+  --rule-strong:#403e39;   /* slightly stronger rule for table edges */
+
+  /* The accent — one red, used as a mark not a decoration */
+  --accent:     #c1432e;
+  --accent-hover:#d34d36;
+  --accent-faint:#3a1814;  /* bg behind selected rows, never as fill elsewhere */
+
+  /* Data — three steps. Differentiate by line-weight, not hue */
+  --data-1:     #e8e3d5;
+  --data-2:     #8a857a;
+  --data-3:     #c1432e;
+  --positive:   #6fa37a;
+  --negative:   #c1432e;
+
+  /* ---------- Type ---------- */
+  --font-sans:  "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:  "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --t-12: 12px;
+  --t-13: 13px;
+  --t-14: 14px;
+  --t-15: 15px;
+  --t-16: 16px;
+  --t-19: 19px;
+  --t-24: 24px;
+  --t-32: 32px;
+  --t-48: 48px;
+
+  --lh-tight: 1.2;
+  --lh-base:  1.55;
+  --lh-loose: 1.7;
+
+  --tracking-tight: -0.01em;
+  --tracking-base:  0em;
+  --tracking-mono:  0em;
+  --tracking-label: 0.04em;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    600;
+
+  /* ---------- Spacing — 8px base ---------- */
+  --s-0:    0px;
+  --s-2:    2px;
+  --s-4:    4px;
+  --s-8:    8px;
+  --s-12:  12px;
+  --s-16:  16px;
+  --s-24:  24px;
+  --s-32:  32px;
+  --s-48:  48px;
+  --s-64:  64px;
+  --s-96:  96px;
+  --s-128:128px;
+
+  /* ---------- Radius — minimal ---------- */
+  --radius-0: 0px;
+  --radius-1: 2px;   /* the only radius you should reach for */
+
+  /* ---------- Motion ---------- */
+  --dur-fast:  80ms;
+  --dur-base: 120ms;
+  --dur-slow: 200ms;
+  --ease:     cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---------- Z ---------- */
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-menu: 100;
+  --z-modal: 1000;
+
+  color-scheme: dark;
+}
+
+/* ---------- Tokens — light mode ---------- */
+:root[data-theme="light"],
+:root.light {
+  --bg:         #fbf7ec;
+  --surface:    #f3eedf;
+  --surface-2:  #ece6d3;
+
+  --fg:         #1a1814;
+  --muted:      #6f6a5e;
+  --faint:      #b3ad9b;
+
+  --rule:       #d8d2c2;
+  --rule-strong:#bdb5a0;
+
+  --accent:     #b8392b;
+  --accent-hover:#a02f23;
+  --accent-faint:#f0ddd6;
+
+  --data-1:     #1a1814;
+  --data-2:     #6f6a5e;
+  --data-3:     #b8392b;
+  --positive:   #4a7a55;
+  --negative:   #b8392b;
+
+  color-scheme: light;
+}
+
+/* Respect OS preference only when no explicit override is set */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]):not(.dark) {
+    --bg:         #fbf7ec;
+    --surface:    #f3eedf;
+    --surface-2:  #ece6d3;
+    --fg:         #1a1814;
+    --muted:      #6f6a5e;
+    --faint:      #b3ad9b;
+    --rule:       #d8d2c2;
+    --rule-strong:#bdb5a0;
+    --accent:     #b8392b;
+    --accent-hover:#a02f23;
+    --accent-faint:#f0ddd6;
+    --data-1:     #1a1814;
+    --data-2:     #6f6a5e;
+    --data-3:     #b8392b;
+    --positive:   #4a7a55;
+    --negative:   #b8392b;
+    color-scheme: light;
+  }
+}
+
+/* ---------- Semantic element defaults ---------- */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--t-15);
+  line-height: var(--lh-base);
+  letter-spacing: var(--tracking-base);
+  margin: 0;
+}
+
+::selection { background: var(--accent); color: var(--bg); }

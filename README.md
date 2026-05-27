@@ -20,4 +20,19 @@
 2025:
  - add meta content
 
+2026:
+ - full design refactor inspired by Edward Tufte
+ - rewrote the component tree; dropped the interactive sort menus
+ - PDF is now headless-rendered from the built site (Puppeteer + `@media print`) instead
+   of a separate `@react-pdf` tree, so the PDF matches the page exactly
+ - made the output trivially bot/ATS-parseable: the build prerenders the DOM into static
+   `dist/index.html`, emits schema.org/Person JSON-LD, and produces a tagged, single-column
+   (correct reading order) PDF with real selectable text
+
+Build: `yarn buildProd` (webpack build → `dist/`, then `node src/pdf/makePdf.js` prerenders
+the HTML and writes `dist/resume.pdf`). On linux-arm64, Chrome-for-Testing has no build, so
+makePdf falls back to a system / Playwright Chromium (or set `PUPPETEER_EXECUTABLE_PATH`).
+
+Design notes live in `docs/design-system.md`.
+
 Check it out [here](http://y4le.github.io/react-resume/)
