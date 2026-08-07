@@ -28,10 +28,15 @@
  - made the output trivially bot/ATS-parseable: the build prerenders the DOM into static
    `dist/index.html`, emits schema.org/Person JSON-LD, and produces a tagged, single-column
    (correct reading order) PDF with real selectable text
+ - deploy the production build to GitHub Pages automatically from `master`
 
 Build: `yarn buildProd` (webpack build → `dist/`, then `node src/pdf/makePdf.js` prerenders
 the HTML and writes `dist/resume.pdf`). On linux-arm64, Chrome-for-Testing has no build, so
 makePdf falls back to a system / Playwright Chromium (or set `PUPPETEER_EXECUTABLE_PATH`).
+
+Deployment: pushes to `master` run `.github/workflows/deploy-pages.yml`, build the site and
+PDF, and deploy `dist/` through GitHub Pages. The repository's Pages source must be set to
+**GitHub Actions** under Settings → Pages; the legacy `gh-pages` branch is no longer used.
 
 Design notes live in `docs/design-system.md`.
 
