@@ -35,4 +35,4 @@ makePdf falls back to a system / Playwright Chromium (or set `PUPPETEER_EXECUTAB
 
 Design notes live in `docs/design-system.md`.
 
-Check it out [here](http://y4le.github.io/react-resume/)
+Check it out at [yalethom.as/resume](https://yalethom.as/resume).

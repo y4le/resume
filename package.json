@@ -1,7 +1,7 @@
 {
-  "name": "react-resume-refactor",
+  "name": "resume",
   "version": "1.0.0",
-  "description": "migrate react-resume to webpack",
+  "description": "Yale Thomas's web and PDF resume",
   "main": "./src/js/app.js",
   "author": "Yale Thomas",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "pdf": "node ./src/pdf/makePdf.js",
     "buildProd": "npx webpack --mode production && node ./src/pdf/makePdf.js",
     "server": "npx webpack serve --mode development",
-    "server:tailnet": "DEV_BASE_PATH=/react-resume/ npx webpack serve --mode development --port 8090"
+    "server:tailnet": "DEV_BASE_PATH=/resume/ npx webpack serve --mode development --port 8090"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
