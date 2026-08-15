@@ -1,16 +1,14 @@
 import React from 'react'
 import { ThemeToggle } from './ThemeToggle.jsx'
 
+const PUBLISHER_HOME = 'https://yalethom.as/'
+const PUBLISHER_LABEL = 'YaleThom.as/resume'
+
 function telHref (number) {
   return 'tel:+' + String(number).replace(/[^\d]/g, '')
 }
 
-function siteLabel (url) {
-  return String(url).replace(/^https?:\/\//, '').replace(/\/$/, '')
-}
-
-function SiteLabel ({ url }) {
-  const label = siteLabel(url)
+function SiteLabel ({ label }) {
   const period = label.indexOf('.')
   if (period === -1) return label
 
@@ -20,7 +18,15 @@ function SiteLabel ({ url }) {
 export function Header ({ profile, pdfHref }) {
   return (
     <header className='head'>
-      <h1 className='name' aria-label={profile.name}><SiteLabel url={profile.link} /></h1>
+      <h1 className='name'>
+        <a
+          className='publisher-signature'
+          href={PUBLISHER_HOME}
+          aria-label={PUBLISHER_LABEL + ', publisher home'}
+        >
+          <SiteLabel label={PUBLISHER_LABEL} />
+        </a>
+      </h1>
       <div className='contact'>
         <span className='contact-group'>
           <a href={telHref(profile.number)}>{profile.number}</a>

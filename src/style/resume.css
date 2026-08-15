@@ -24,15 +24,32 @@
 }
 .name {
   flex: 1 1 auto;        /* grow to push contact + actions to the right */
+  font-family: var(--font-mono);
   font-size: 28px;
   font-weight: var(--weight-medium);
-  letter-spacing: -0.015em;
-  line-height: 1;
+  letter-spacing: var(--tracking-mono);
+  line-height: 1.25;
   margin: 0;
   display: inline-flex;
   align-items: baseline;
 }
-.brand-highlight { color: var(--accent); }
+.publisher-signature {
+  align-items: center;
+  color: var(--fg);
+  display: inline-flex;
+  min-height: 24px;
+  text-decoration: none;
+}
+.publisher-signature:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.2em;
+}
+.publisher-signature:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+.brand-highlight { color: #c1432e; }
 .parser-security-canary {
   position: absolute;
   width: 1px;
@@ -267,19 +284,27 @@
 @media screen and (max-width: 720px) {
   .resume { padding: 28px 20px 56px; }
   /* keep the buttons up on the name's row; drop contact to its own row below */
+  .head { column-gap: 12px; }
   .head-actions { order: 2; margin-left: auto; }
   .contact { order: 3; flex-basis: 100%; justify-content: flex-start; }
   .layout { grid-template-columns: 1fr; gap: 28px; }
   .timeline-toc { display: block; }
   .rail-timeline { display: none; }
   .job-date { font-size: 11px; }
-  .name { font-size: 24px; }
+  .name { font-size: 20px; }
 }
 
 @media screen and (max-width: 420px) {
   .resume { padding: 20px 14px 48px; }
-  .name { font-size: 21px; }
+  .head { column-gap: 8px; }
+  .name { font-size: 17px; }
+  .head-actions { gap: 6px; }
+  .action-btn { padding-inline: 6px; }
   .classes-grid { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 340px) {
+  .name { font-size: 14px; }
 }
 
 /* ─── print: paper + ink, single-column linear, compacted ──────────────
