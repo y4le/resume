@@ -1,0 +1,18 @@
+schema: 1
+title: resume
+description: Yale's web and PDF resume. Built for humans and bots.
+bullets:
+  - This very site you are on now!
+  - Renders a responsive website and matching print-ready PDF from one structured content source.
+  - Prerenders semantic HTML and schema.org metadata for search engines and automated readers.
+date:
+  start: "2015-09"
+  end: "present"
+link: https://yalethom.as/resume/
+type: website
+tags:
+  - information design
+  - web
+  - React
+  - Preact
+svg: .yalethomas/card.svg

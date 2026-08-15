@@ -33,6 +33,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile --non-interactive
 
+      - name: Test and verify generated project card
+        run: yarn test:card && yarn card:check
+
       - name: Build site and PDF
         run: yarn buildProd
 

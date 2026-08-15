@@ -30,9 +30,14 @@
    (correct reading order) PDF with real selectable text
  - deploy the production build to GitHub Pages automatically from `master`
 
-Build: `yarn buildProd` (webpack build → `dist/`, then `node src/pdf/makePdf.js` prerenders
-the HTML and writes `dist/resume.pdf`). On linux-arm64, Chrome-for-Testing has no build, so
+Build: `yarn buildProd` (project-card generation → webpack build → `dist/`, then
+`node src/pdf/makePdf.js` prerenders the HTML and writes `dist/resume.pdf`). On linux-arm64, Chrome-for-Testing has no build, so
 makePdf falls back to a system / Playwright Chromium (or set `PUPPETEER_EXECUTABLE_PATH`).
+
+The portfolio artwork at `.yalethomas/card.svg` is generated from the same work-history JSON
+as the site. Run `yarn card` after content changes; normal builds also regenerate it, while
+`yarn card:check` verifies that the committed asset is current. Animation pacing is controlled
+by `--resume-scroll-duration` in `src/svg/card.template.svg`.
 
 Deployment: pushes to `master` run `.github/workflows/deploy-pages.yml`, build the site and
 PDF, and deploy `dist/` through GitHub Pages. The repository's Pages source must be set to

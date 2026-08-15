@@ -1,0 +1,73 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  id="resume-card"
+  viewBox="0 0 1618 1000"
+  role="img"
+  aria-labelledby="resume-card-title resume-card-description"
+>
+  <title id="resume-card-title">resume</title>
+  <desc id="resume-card-description">__RESUME_DESCRIPTION__</desc>
+
+  <style>
+    #resume-card {
+      --resume-scroll-duration: 8s;
+    }
+
+    #resume-card .resume-wordmark {
+      fill: #8a857a;
+      font-family: Geist, Inter, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 318px;
+      font-weight: 720;
+      letter-spacing: -0.06em;
+    }
+
+    #resume-card .resume-job-history {
+      animation: resume-job-scroll var(--resume-scroll-duration) linear infinite;
+      transform-box: view-box;
+      transform-origin: 0 0;
+    }
+
+    #resume-card .resume-job {
+      fill: #e8e3d5;
+      font-family: Geist, Inter, 'Helvetica Neue', Arial, sans-serif;
+      font-size: var(--resume-job-size);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      text-anchor: end;
+    }
+
+    @keyframes resume-job-scroll {
+      from {
+        transform: translateY(var(--resume-scroll-start));
+      }
+      to {
+        transform: translateY(var(--resume-scroll-end));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #resume-card .resume-job-history {
+        animation: none;
+        transform: translateY(var(--resume-scroll-rest));
+      }
+    }
+  </style>
+
+  <defs>
+    <clipPath id="resume-card-frame-clip">
+      <rect width="1618" height="1000" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#resume-card-frame-clip)">
+    <text class="resume-wordmark" x="809" y="602" text-anchor="middle">resume</text>
+
+    <g
+      class="resume-job-history"
+      aria-label="Work history"
+      style="__RESUME_JOB_STYLE__"
+    >
+__RESUME_JOB_TEXT__
+    </g>
+  </g>
+</svg>

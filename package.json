@@ -6,9 +6,12 @@
   "author": "Yale Thomas",
   "license": "MIT",
   "scripts": {
-    "build": "npx webpack --mode production",
+    "card": "node ./src/svg/buildCard.js",
+    "card:check": "node ./src/svg/buildCard.js --check",
+    "test:card": "node --test ./src/svg/buildCard.test.js",
+    "build": "yarn card && npx webpack --mode production",
     "pdf": "node ./src/pdf/makePdf.js",
-    "buildProd": "npx webpack --mode production && node ./src/pdf/makePdf.js",
+    "buildProd": "yarn card && npx webpack --mode production && node ./src/pdf/makePdf.js",
     "server": "npx webpack serve --mode development",
     "server:tailnet": "DEV_BASE_PATH=/resume/ npx webpack serve --mode development --port 8090"
   },
