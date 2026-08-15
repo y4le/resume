@@ -56,6 +56,20 @@ test('renders a deterministic, portable golden-ratio card', () => {
   assert.doesNotMatch(first, /(?:href|src)\s*=\s*["']https?:|url\(\s*["']?https?:|@import/i)
 })
 
+test('supports automatic and explicit light and dark color schemes', () => {
+  const output = renderCard(template, {
+    WORK: [{ title: 'Current', end_date: 'now' }]
+  })
+
+  assert.match(output, /color-scheme: light dark/)
+  assert.match(output, /--card-ink: light-dark\(#1a1814, #e8e3d5\)/)
+  assert.match(output, /--card-muted: light-dark\(#6f6a5e, #8a857a\)/)
+  assert.match(output, /:root\[data-color-scheme="light"\][^{]*{\s*color-scheme: only light/)
+  assert.match(output, /:root\[data-color-scheme="dark"\][^{]*{\s*color-scheme: only dark/)
+  assert.match(output, /\.resume-wordmark\s*{[^}]*fill: var\(--card-ink\)/s)
+  assert.match(output, /\.resume-job\s*{[^}]*fill: var\(--card-muted\)/s)
+})
+
 test('adding a new current job updates the text and scroll distance', () => {
   const previous = renderCard(template, {
     WORK: [{ title: 'Previous', end_date: '2025' }]

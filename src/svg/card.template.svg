@@ -9,12 +9,26 @@
   <desc id="resume-card-description">__RESUME_DESCRIPTION__</desc>
 
   <style>
+    :root {
+      color-scheme: light dark;
+      --card-ink: light-dark(#1a1814, #e8e3d5);
+      --card-muted: light-dark(#6f6a5e, #8a857a);
+    }
+
+    :root[data-color-scheme="light"] {
+      color-scheme: only light;
+    }
+
+    :root[data-color-scheme="dark"] {
+      color-scheme: only dark;
+    }
+
     #resume-card {
       --resume-scroll-duration: 8s;
     }
 
     #resume-card .resume-wordmark {
-      fill: #8a857a;
+      fill: var(--card-ink);
       font-family: Geist, Inter, 'Helvetica Neue', Arial, sans-serif;
       font-size: 318px;
       font-weight: 720;
@@ -28,7 +42,7 @@
     }
 
     #resume-card .resume-job {
-      fill: #e8e3d5;
+      fill: var(--card-muted);
       font-family: Geist, Inter, 'Helvetica Neue', Arial, sans-serif;
       font-size: var(--resume-job-size);
       font-weight: 600;
